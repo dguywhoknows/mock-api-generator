@@ -3,87 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mock Forge</title>
-<meta name="description" content="Describe an API in plain English; get a schema, realistic relational fake data, a live in-browser REST simulator and TypeScript/OpenAPI exports.">
-<meta name="app-repo" content="https://github.com/dguywhoknows/mock-api-generator">
-<meta name="app-version" content="2.0.0">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial%2CHelvetica%2Csans-serif' font-weight='700' font-size='13' fill='white'%3EMF%3C/text%3E%3C/svg%3E">
+<title>Mock Forge: Describe your API. Start calling it right now</title>
+<meta name="description" content="Plain English becomes a schema, realistic related data and a working in-browser REST API, plus TypeScript, OpenAPI and SQL.">
+<meta property="og:title" content="Mock Forge">
+<meta property="og:description" content="Plain English becomes a schema, realistic related data and a working in-browser REST API, plus TypeScript, OpenAPI and SQL.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='13' fill='white'%3EMF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/base.css">
-<link rel="stylesheet" href="styles/app.css">
+<link rel="stylesheet" href="styles/landing.css">
+<style>:root { --accent: #7c3aed; }</style>
 </head>
-<body>
-<header class="topbar">
-  <div class="brand"><span class="logo" aria-hidden="true">MF</span><div><h1>Mock Forge</h1><p>Describe an API, get a schema, seeded data and a working mock.</p></div></div>
-  <nav class="topnav" data-nav aria-label="Pages"></nav>
-  <div class="top-actions"><a class="btn ghost sm" href="https://github.com/dguywhoknows/mock-api-generator" target="_blank" rel="noopener">GitHub</a><span data-ai-badge></span></div>
+<body class="landing">
+<header class="l-nav">
+  <a class="l-brand" href="#top"><span class="logo">MF</span><b>Mock Forge</b></a>
+  <nav aria-label="Sections"><a href="#demo">Demo</a><a href="#ask">Ask it</a><a href="#features">Features</a><a href="#faq">FAQ</a></nav>
+  <div class="l-nav-cta"><a class="btn primary" href="app.html">Open the app</a></div>
 </header>
-<div class="page active" data-page="schema" data-title="Schema">
-<main class="stack">
-  <div class="card stack">
-    <label>Describe your API
-      <textarea id="desc" rows="3">A blogging platform: users write posts; posts have a title, body, tags, status (draft/published/archived) and view count; readers leave comments on posts.</textarea>
-    </label>
-    <div class="row"><button class="btn primary" id="design">Design schema</button><button class="btn ghost" id="addRes">Add resource</button><span class="grow"></span><span class="small muted" id="schemaInfo"></span></div>
-  </div>
-  <div class="card"><div class="row between"><h2 style="margin:0">Relationships</h2><span class="small muted">arrows point from a reference field to its resource</span></div><div id="er" class="er"></div></div>
-  <div id="editor" class="stack"></div>
-</main>
-</div>
 
-<div class="page" data-page="data" data-title="Data">
-<main class="stack">
-  <div class="card row"><label class="small">Seed <input class="input mono" id="seed" value="42" style="width:90px;display:inline-block;margin-left:4px"></label><label class="small">Rows per resource <input class="input" id="rows" type="number" value="25" min="1" max="500" style="width:90px;display:inline-block;margin-left:4px"></label><button class="btn" id="regen">Regenerate</button><span class="grow"></span><button class="btn ghost" id="dataCsv">Download CSV</button></div>
-  <div class="row" id="resTabs"></div>
-  <div class="card table-wrap" id="dataTable" style="max-height:620px"></div>
-</main>
-</div>
+<main id="top">
+  <section class="l-hero">
+    <p class="l-kicker">Free · runs in your browser · AI built in</p>
+    <h1>Describe your API. Start calling it right now.</h1>
+    <p class="l-sub">Plain English becomes a schema, realistic related data and a working in-browser REST API, plus TypeScript, OpenAPI and SQL.</p>
+    <div class="l-actions"><a class="btn primary big" href="app.html">Open the app</a><a class="btn big" href="#demo">See it working</a></div>
+  </section>
 
-<div class="page" data-page="console" data-title="Console">
-<main class="grid cols-2">
-  <section class="card stack">
-    <div class="row between"><h2 style="margin:0">Request</h2><div class="row small"><label class="chk"><input type="checkbox" id="latency" checked> latency</label><label class="chk"><input type="checkbox" id="chaos"> chaos (10% 500s)</label></div></div>
-    <div class="row">
-      <select id="method" style="width:auto" aria-label="Method"><option>GET</option><option>POST</option><option>PATCH</option><option>PUT</option><option>DELETE</option></select>
-      <input class="input grow mono" id="path" value="/posts?status=published&amp;sort=-views&amp;limit=3&amp;expand=author" aria-label="Path">
-      <button class="btn primary" id="send">Send</button>
+  <section class="l-demo reveal" id="demo">
+    <div class="l-window"><div class="l-window-bar"><i></i><i></i><i></i><span>Mock Forge</span></div>
+      <iframe src="app.html?embed=1" title="Mock Forge live demo" loading="lazy"></iframe></div>
+    <p class="l-caption">This is the real app running below, not a recording. Try it.</p>
+  </section>
+
+  <section class="l-section reveal" id="ask">
+    <div class="l-head"><p class="l-kicker">Just say what you want</p><h2>Tell it in plain words. It uses its own tools to do it.</h2>
+      <p>Open the AI box in the app, type a request, and the AI drives the app's real features for you: it sets things up, edits, runs and reports back. Standing instructions let you shape every AI feature to how you like to work.</p></div>
+    <div class="l-prompts"><div class="l-prompt"><div class="say">An API for a vet clinic with owners, pets and appointments</div><div class="does">Designs the schema and generates data.</div></div><div class="l-prompt"><div class="say">Add a nullable microchip number to pets</div><div class="does">Edits the schema and regenerates data.</div></div><div class="l-prompt"><div class="say">Make GET /appointments fail with a 503 half the time</div><div class="does">Adds a route override for testing errors.</div></div></div>
+  </section>
+
+  <section class="l-section reveal" id="features">
+    <div class="l-head"><p class="l-kicker">What it does</p><h2>Everything in one place</h2></div>
+    <div class="l-grid"><div class="l-card"><h3>AI schema design</h3><p>AI schema design with 29 field types, refs, enums, ranges, required/nullable/unique</p></div><div class="l-card"><h3>Seeded</h3><p>Seeded, reproducible fake data generated in topological (FK-safe) order</p></div><div class="l-card"><h3>REST simulator</h3><p>CRUD, filters (_gte/_lte/_ne/_like), q search, multi-sort, page/limit, fields, expand, nested routes</p></div><div class="l-card"><h3>Validation engine</h3><p>Validation engine with 422 details (types, enums, ranges, emails, FK existence, uniqueness, unknown fields)</p></div><div class="l-card"><h3>Latency simulation</h3><p>Latency simulation and chaos mode (random 500s) for resilience testing</p></div><div class="l-card"><h3>Syntax-highlighted JSON console</h3><p>Syntax-highlighted JSON console with one-click example requests</p></div><div class="l-card"><h3>Exports</h3><p>TypeScript interfaces, OpenAPI 3.0, JSON Schema, db.json</p></div><div class="l-card"><h3>Schema page</h3><p>Editable resources and fields (types, required/nullable/unique, ranges, enum values, references) with a live entity-relationship diagram; data regenerates as you edit</p></div><div class="l-card"><h3>Data page</h3><p>Browse generated rows per resource, change the seed and row count, download CSV</p></div></div>
+  </section>
+
+  <section class="l-section reveal">
+    <div class="l-head"><p class="l-kicker">How it works</p><h2>Real engines where it counts, AI where it helps</h2></div>
+    <div class="l-steps">
+      <div><span>1</span><h3>Open the app</h3><p>No sign-up needed right now. Everything runs in your browser.</p></div>
+      <div><span>2</span><h3>Ask in your own words</h3><p>Type or click. The AI handles natural-language → typed API schema (JSON), sanitized and repaired locally.</p></div>
+      <div><span>3</span><h3>Keep what you make</h3><p>Your work is saved in your browser and can be exported any time.</p></div>
     </div>
-    <textarea id="body" class="mono hidden" rows="5" placeholder='{"title": "Hello"}' aria-label="Body"></textarea>
-    <div class="row" id="examples"></div>
-    <details class="small"><summary>Query syntax</summary><div class="muted" style="margin-top:6px">
-      <code>?field=value</code> filter · <code>field_gte / _lte / _ne / _like</code> operators · <code>q=</code> full-text · <code>sort=field</code> or <code>-field</code> · <code>page</code> and <code>limit</code> · <code>expand=relation</code> · <code>fields=a,b</code> projection · nested <code>/users/3/posts</code></div></details>
-    <div><div class="tabs" id="snipTabs"><button class="on" data-s="curl">curl</button><button data-s="fetch">fetch</button></div><pre id="snippet" class="export small"></pre></div>
-    <div><h3>History</h3><div id="history" class="small"></div></div>
+    <p class="l-note">Computed locally, with no AI involved: data generation, routing, querying, validation, exports.</p>
   </section>
-  <section class="card stack">
-    <div class="resp-head"><span id="status" class="tag">—</span><span id="timing" class="small muted"></span></div>
-    <pre id="resp" class="resp">Send a request to the mock API.</pre>
+
+  <section class="l-section reveal" id="faq">
+    <div class="l-head"><p class="l-kicker">Questions</p><h2>Good to know</h2></div>
+    <div class="l-faq">
+      <details><summary>Is it free?</summary><p>Yes. Every feature is free. </p></details>
+      <details><summary>Where is my data stored?</summary><p>What you create stays in this browser on this device. You can export a backup or delete everything from Settings.</p></details>
+      <details><summary>Do I need an API key?</summary><p>Not to try it: the app runs in demo mode with sample AI output. For live AI, connect a free Groq or OpenRouter key in Settings.</p></details>
+      <details><summary>What can I type into the AI box?</summary><p>Anything you would ask a helpful colleague who knows the app, such as: "An API for a vet clinic with owners, pets and appointments". It plans the steps, runs the app's own functions and tells you what it did. The Instructions tab saves preferences every AI feature follows.</p></details>
+      <details><summary>Can I see the code?</summary><p>Yes. It is open source under the MIT license on <a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">GitHub</a>, with a <a href="tests/">public test suite</a>.</p></details>
+    </div>
+  </section>
+
+  <section class="l-final reveal">
+    <h2>Describe your API. Start calling it right now.</h2>
+    <a class="btn primary big" href="app.html">Open the app</a>
   </section>
 </main>
-</div>
 
-<div class="page" data-page="routes" data-title="Routes">
-<main class="stack">
-  <div class="page-head"><div><h2>Route overrides</h2><p>Force a status, delay or body for matching requests, e.g. to test error handling or loading states. Patterns accept <code>:id</code> and a trailing <code>*</code>.</p></div><button class="btn primary" id="addOv">Add override</button></div>
-  <div class="card table-wrap"><table id="ovTable"></table></div>
-  <div class="card"><h2>Endpoints</h2><div id="endpoints" class="small"></div></div>
-</main>
-</div>
-
-<div class="page" data-page="export" data-title="Export">
-<main class="stack">
-  <div class="card row" id="exportKinds"><button class="btn sm" data-x="ts">TypeScript</button><button class="btn sm" data-x="openapi">OpenAPI 3</button><button class="btn sm" data-x="jsonschema">JSON Schema</button><button class="btn sm" data-x="sql">SQL</button><button class="btn sm" data-x="msw">MSW handlers</button><button class="btn sm" data-x="db">db.json</button><span class="grow"></span><button class="btn sm ghost" id="copyExport">Copy</button><button class="btn sm primary" id="dlExport">Download</button></div>
-  <div class="card"><pre id="exportOut" class="export" style="max-height:640px"></pre></div>
-</main>
-</div>
-
-<div class="page" data-page="settings" data-title="Settings"></div>
-<script src="src/lib/dom.js"></script>
-<script src="src/lib/ai.js"></script>
-<script src="src/lib/router.js"></script>
-<script src="src/core.js"></script>
-<script src="src/demo.js"></script>
-<script src="src/app.js"></script>
+<footer class="l-foot"><span>Mock Forge</span><span><a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">Source</a> · <a href="tests/">Tests</a> · MIT license</span></footer>
+<script>
+document.querySelectorAll('.reveal').forEach((el) => el.classList.add('pre'));
+const io = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.remove('pre'); io.unobserve(x.target); } }), { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
 </body>
 </html>
