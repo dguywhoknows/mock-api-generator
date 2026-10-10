@@ -1,0 +1,27 @@
+:root { --accent: #7c3aed; }
+.res { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+.res .rh { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--panel-2); font-weight: 700; }
+.res table td, .res table th { padding: 5px 10px; font-size: 13px; }
+.res code { font-size: 12px; }
+.resp, .export { max-height: 440px; overflow: auto; font-size: 12px; margin: 0; }
+.resp-head { display: flex; gap: 10px; align-items: center; }
+.chk { display: inline-flex; align-items: center; gap: 5px; font-weight: 500; color: var(--text); }
+#examples .btn { font: 12px var(--mono); }
+#dataTable td { font-size: 12px; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.j-k { color: #c2417a; } .j-s { color: #1f9d63; } .j-n { color: #c98a0b; } .j-b { color: var(--accent); }
+.er { overflow-x: auto; margin-top: 10px; }
+.er svg text { font: 12px var(--mono); fill: var(--text); }
+.ed .rh input { font: 700 14px var(--mono); padding: 4px 8px; max-width: 200px; }
+.ed table { width: 100%; }
+.ed td { padding: 3px 4px; }
+.ed td input, .ed td select { padding: 4px 6px; font-size: 12.5px; }
+.ed .props input { width: 70px; }
+.hist-row { display: grid; grid-template-columns: 60px 42px minmax(0, 1fr); gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--line); cursor: pointer; font-family: var(--mono); }
+.hist-row:hover { background: var(--panel-2); }
+#ovTable td input, #ovTable td select { padding: 4px 6px; font-size: 13px; }
+#ovTable textarea { min-height: 34px; font: 12px var(--mono); padding: 4px 6px; }
+.ed td:nth-child(1) input { width: 170px; }
+.ed td:nth-child(2) select { width: 140px; }
+.ed td:nth-child(3) { width: 100%; }
+.ed .props { gap: 10px; flex-wrap: wrap; }
+.ed .props select { width: 140px; }

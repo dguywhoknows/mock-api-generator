@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mock Forge</title>
+<meta name="description" content="Describe an API in plain English; get a schema, realistic relational fake data, a live in-browser REST simulator and TypeScript/OpenAPI exports.">
+<meta name="app-repo" content="https://github.com/dguywhoknows/mock-api-generator">
+<meta name="app-version" content="2.0.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial%2CHelvetica%2Csans-serif' font-weight='700' font-size='13' fill='white'%3EMF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo" aria-hidden="true">MF</span><div><h1>Mock Forge</h1><p>Describe an API, get a schema, seeded data and a working mock.</p></div></div>
+  <nav class="topnav" data-nav aria-label="Pages"></nav>
+  <div class="top-actions"><a class="btn ghost sm" href="https://github.com/dguywhoknows/mock-api-generator" target="_blank" rel="noopener">GitHub</a><span data-ai-badge></span></div>
+</header>
+<div class="page active" data-page="schema" data-title="Schema">
+<main class="stack">
+  <div class="card stack">
+    <label>Describe your API
+      <textarea id="desc" rows="3">A blogging platform: users write posts; posts have a title, body, tags, status (draft/published/archived) and view count; readers leave comments on posts.</textarea>
+    </label>
+    <div class="row"><button class="btn primary" id="design">Design schema</button><button class="btn ghost" id="addRes">Add resource</button><span class="grow"></span><span class="small muted" id="schemaInfo"></span></div>
+  </div>
+  <div class="card"><div class="row between"><h2 style="margin:0">Relationships</h2><span class="small muted">arrows point from a reference field to its resource</span></div><div id="er" class="er"></div></div>
+  <div id="editor" class="stack"></div>
+</main>
+</div>
+
+<div class="page" data-page="data" data-title="Data">
+<main class="stack">
+  <div class="card row"><label class="small">Seed <input class="input mono" id="seed" value="42" style="width:90px;display:inline-block;margin-left:4px"></label><label class="small">Rows per resource <input class="input" id="rows" type="number" value="25" min="1" max="500" style="width:90px;display:inline-block;margin-left:4px"></label><button class="btn" id="regen">Regenerate</button><span class="grow"></span><button class="btn ghost" id="dataCsv">Download CSV</button></div>
+  <div class="row" id="resTabs"></div>
+  <div class="card table-wrap" id="dataTable" style="max-height:620px"></div>
+</main>
+</div>
+
+<div class="page" data-page="console" data-title="Console">
+<main class="grid cols-2">
+  <section class="card stack">
+    <div class="row between"><h2 style="margin:0">Request</h2><div class="row small"><label class="chk"><input type="checkbox" id="latency" checked> latency</label><label class="chk"><input type="checkbox" id="chaos"> chaos (10% 500s)</label></div></div>
+    <div class="row">
+      <select id="method" style="width:auto" aria-label="Method"><option>GET</option><option>POST</option><option>PATCH</option><option>PUT</option><option>DELETE</option></select>
+      <input class="input grow mono" id="path" value="/posts?status=published&amp;sort=-views&amp;limit=3&amp;expand=author" aria-label="Path">
+      <button class="btn primary" id="send">Send</button>
+    </div>
+    <textarea id="body" class="mono hidden" rows="5" placeholder='{"title": "Hello"}' aria-label="Body"></textarea>
+    <div class="row" id="examples"></div>
+    <details class="small"><summary>Query syntax</summary><div class="muted" style="margin-top:6px">
+      <code>?field=value</code> filter · <code>field_gte / _lte / _ne / _like</code> operators · <code>q=</code> full-text · <code>sort=field</code> or <code>-field</code> · <code>page</code> and <code>limit</code> · <code>expand=relation</code> · <code>fields=a,b</code> projection · nested <code>/users/3/posts</code></div></details>
+    <div><div class="tabs" id="snipTabs"><button class="on" data-s="curl">curl</button><button data-s="fetch">fetch</button></div><pre id="snippet" class="export small"></pre></div>
+    <div><h3>History</h3><div id="history" class="small"></div></div>
+  </section>
+  <section class="card stack">
+    <div class="resp-head"><span id="status" class="tag">—</span><span id="timing" class="small muted"></span></div>
+    <pre id="resp" class="resp">Send a request to the mock API.</pre>
+  </section>
+</main>
+</div>
+
+<div class="page" data-page="routes" data-title="Routes">
+<main class="stack">
+  <div class="page-head"><div><h2>Route overrides</h2><p>Force a status, delay or body for matching requests, e.g. to test error handling or loading states. Patterns accept <code>:id</code> and a trailing <code>*</code>.</p></div><button class="btn primary" id="addOv">Add override</button></div>
+  <div class="card table-wrap"><table id="ovTable"></table></div>
+  <div class="card"><h2>Endpoints</h2><div id="endpoints" class="small"></div></div>
+</main>
+</div>
+
+<div class="page" data-page="export" data-title="Export">
+<main class="stack">
+  <div class="card row" id="exportKinds"><button class="btn sm" data-x="ts">TypeScript</button><button class="btn sm" data-x="openapi">OpenAPI 3</button><button class="btn sm" data-x="jsonschema">JSON Schema</button><button class="btn sm" data-x="sql">SQL</button><button class="btn sm" data-x="msw">MSW handlers</button><button class="btn sm" data-x="db">db.json</button><span class="grow"></span><button class="btn sm ghost" id="copyExport">Copy</button><button class="btn sm primary" id="dlExport">Download</button></div>
+  <div class="card"><pre id="exportOut" class="export" style="max-height:640px"></pre></div>
+</main>
+</div>
+
+<div class="page" data-page="settings" data-title="Settings"></div>
+<script src="src/lib/dom.js"></script>
+<script src="src/lib/ai.js"></script>
+<script src="src/lib/router.js"></script>
+<script src="src/core.js"></script>
+<script src="src/demo.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>
