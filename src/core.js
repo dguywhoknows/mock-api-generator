@@ -1,4 +1,4 @@
-/* core.js — seeded fake data, schema handling, an in-memory REST simulator with route overrides, and code/schema exporters (pure, unit-tested). */
+/* Seeded fake data, schema handling, an in-memory REST simulator with route overrides, and code/schema exporters (pure, unit-tested). */
 
 var WORDS = {
   first: ['Ava', 'Liam', 'Maya', 'Noah', 'Zoe', 'Ethan', 'Priya', 'Mateo', 'Yuki', 'Omar', 'Chloe', 'Leo', 'Amara', 'Lucas', 'Sofia', 'Kai', 'Nina', 'Arjun', 'Elena', 'Theo', 'Ines', 'Malik'],

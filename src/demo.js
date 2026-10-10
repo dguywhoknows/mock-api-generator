@@ -1,4 +1,4 @@
-/* demo.js — the blog schema loaded on first visit and used when no model provider is configured. */
+/* The blog schema loaded on first visit and used when no model provider is configured. */
 var DEMO_SCHEMA = { resources: [
   { name: 'users', fields: [{ name: 'id', type: 'id' }, { name: 'name', type: 'fullName', required: true }, { name: 'email', type: 'email', required: true, unique: true }, { name: 'role', type: 'enum', values: ['admin', 'author', 'reader'] }, { name: 'avatar', type: 'imageUrl', nullable: true }, { name: 'city', type: 'city' }, { name: 'createdAt', type: 'datetime' }] },
   { name: 'posts', fields: [{ name: 'id', type: 'id' }, { name: 'authorId', type: 'ref', ref: 'users', required: true }, { name: 'title', type: 'title', required: true }, { name: 'body', type: 'paragraph' }, { name: 'tags', type: 'tags' }, { name: 'status', type: 'enum', values: ['draft', 'published', 'archived'], required: true }, { name: 'views', type: 'int', min: 0, max: 50000 }, { name: 'createdAt', type: 'datetime' }] },

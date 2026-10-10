@@ -1,4 +1,4 @@
-:root { --accent: #7c3aed; }
+:root { --accent: #4f6d8f; }
 .res { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
 .res .rh { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--panel-2); font-weight: 700; }
 .res table td, .res table th { padding: 5px 10px; font-size: 13px; }

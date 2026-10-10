@@ -3,81 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mock Forge: Describe your API. Start calling it right now</title>
-<meta name="description" content="Plain English becomes a schema, realistic related data and a working in-browser REST API, plus TypeScript, OpenAPI and SQL.">
+<title>Mock Forge: A fake REST API with realistic data, generated from a description</title>
+<meta name="description" content="Describe your domain to get related resources, seeded data and endpoints with filtering, sorting and pagination. Add failure modes for testing, and export TypeScript types, OpenAPI, SQL or MSW handlers.">
 <meta property="og:title" content="Mock Forge">
-<meta property="og:description" content="Plain English becomes a schema, realistic related data and a working in-browser REST API, plus TypeScript, OpenAPI and SQL.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='13' fill='white'%3EMF%3C/text%3E%3C/svg%3E">
+<meta property="og:description" content="Describe your domain to get related resources, seeded data and endpoints with filtering, sorting and pagination. Add failure modes for testing, and export TypeScript types, OpenAPI, SQL or MSW handlers.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%234f6d8f'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='19' fill='white'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style id="type">:root { --font-head: 'IBM Plex Sans', system-ui, sans-serif; --font-body: 'IBM Plex Sans', system-ui, sans-serif; }</style>
 <link rel="stylesheet" href="styles/base.css">
 <link rel="stylesheet" href="styles/landing.css">
-<style>:root { --accent: #7c3aed; }</style>
+<style>:root { --accent: #4f6d8f; }</style>
 </head>
 <body class="landing">
-<header class="l-nav">
-  <a class="l-brand" href="#top"><span class="logo">MF</span><b>Mock Forge</b></a>
-  <nav aria-label="Sections"><a href="#demo">Demo</a><a href="#ask">Ask it</a><a href="#features">Features</a><a href="#faq">FAQ</a></nav>
-  <div class="l-nav-cta"><a class="btn ghost" href="login.html">Log in</a><a class="btn primary" href="login.html">Get started free</a></div>
-</header>
+<header class="l-nav"><div class="l-wrap l-nav-in">
+  <a class="l-brand" href="#top">Mock Forge</a>
+  <nav aria-label="Sections"><a href="#demo">Try it</a><a href="#ask">Commands</a><a href="#features">Features</a><a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">Source</a></nav>
+  <div class="l-nav-cta"><a class="btn ghost" href="login.html">Log in</a><a class="btn primary" href="login.html">Sign up free</a></div>
+</div></header>
 
 <main id="top">
-  <section class="l-hero">
-    <p class="l-kicker">Free · runs in your browser · AI built in</p>
-    <h1>Describe your API. Start calling it right now.</h1>
-    <p class="l-sub">Plain English becomes a schema, realistic related data and a working in-browser REST API, plus TypeScript, OpenAPI and SQL.</p>
-    <div class="l-actions"><a class="btn primary big" href="login.html">Get started free</a><a class="btn big" href="#demo">See it working</a></div>
+  <section class="l-wrap l-hero">
+    <h1>A fake REST API with realistic data, generated from a description.</h1>
+    <p class="l-sub">Describe your domain to get related resources, seeded data and endpoints with filtering, sorting and pagination. Add failure modes for testing, and export TypeScript types, OpenAPI, SQL or MSW handlers.</p>
+    <div class="l-actions"><a class="btn primary big" href="login.html">Sign up free</a><a class="l-link" href="#demo">Or try it on this page</a></div>
+    <p class="l-meta">Version 2.0.0 · MIT license · <a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">github.com/dguywhoknows/mock-api-generator</a></p>
   </section>
 
-  <section class="l-demo reveal" id="demo">
-    <div class="l-window"><div class="l-window-bar"><i></i><i></i><i></i><span>Mock Forge</span></div>
-      <iframe src="app.html?embed=1" title="Mock Forge live demo" loading="lazy"></iframe></div>
-    <p class="l-caption">This is the real app running below, not a recording. Try it.</p>
+  <section class="l-wrap l-demo" id="demo">
+    <div class="l-frame"><iframe src="app.html?embed=1" title="Mock Forge" loading="lazy"></iframe></div>
+    <p class="l-caption">The app itself, running inside this page. Anything you do here is saved in your browser.</p>
   </section>
 
-  <section class="l-section reveal" id="ask">
-    <div class="l-head"><p class="l-kicker">Just say what you want</p><h2>Tell it in plain words. It uses its own tools to do it.</h2>
-      <p>Open the AI box in the app, type a request, and the AI drives the app's real features for you: it sets things up, edits, runs and reports back. Standing instructions let you shape every AI feature to how you like to work.</p></div>
-    <div class="l-prompts"><div class="l-prompt"><div class="say">An API for a vet clinic with owners, pets and appointments</div><div class="does">Designs the schema and generates data.</div></div><div class="l-prompt"><div class="say">Add a nullable microchip number to pets</div><div class="does">Edits the schema and regenerates data.</div></div><div class="l-prompt"><div class="say">Make GET /appointments fail with a 503 half the time</div><div class="does">Adds a route override for testing errors.</div></div></div>
+  <section class="l-wrap l-section" id="ask">
+    <h2>Ask it to do things</h2>
+    <p class="l-lead">Press Ctrl+K in the app (Cmd+K on a Mac) and describe what you want. The model chooses from Mock Forge's own functions, runs them in order and tells you what changed. Some examples:</p>
+    <table class="l-cmds"><tr><td class="say">An API for a vet clinic with owners, pets and appointments</td><td>Designs the schema and generates data.</td></tr><tr><td class="say">Add a nullable microchip number to pets</td><td>Edits the schema and regenerates data.</td></tr><tr><td class="say">Make GET /appointments fail with a 503 half the time</td><td>Adds a route override for testing errors.</td></tr></table>
+    <p class="l-small">Instructions you save in the same box, such as "keep it short" or "I'm a beginner", are added to every AI request the app makes.</p>
   </section>
 
-  <section class="l-section reveal" id="features">
-    <div class="l-head"><p class="l-kicker">What it does</p><h2>Everything in one place</h2></div>
-    <div class="l-grid"><div class="l-card"><h3>AI schema design</h3><p>AI schema design with 29 field types, refs, enums, ranges, required/nullable/unique</p></div><div class="l-card"><h3>Seeded</h3><p>Seeded, reproducible fake data generated in topological (FK-safe) order</p></div><div class="l-card"><h3>REST simulator</h3><p>CRUD, filters (_gte/_lte/_ne/_like), q search, multi-sort, page/limit, fields, expand, nested routes</p></div><div class="l-card"><h3>Validation engine</h3><p>Validation engine with 422 details (types, enums, ranges, emails, FK existence, uniqueness, unknown fields)</p></div><div class="l-card"><h3>Latency simulation</h3><p>Latency simulation and chaos mode (random 500s) for resilience testing</p></div><div class="l-card"><h3>Syntax-highlighted JSON console</h3><p>Syntax-highlighted JSON console with one-click example requests</p></div><div class="l-card"><h3>Exports</h3><p>TypeScript interfaces, OpenAPI 3.0, JSON Schema, db.json</p></div><div class="l-card"><h3>Schema page</h3><p>Editable resources and fields (types, required/nullable/unique, ranges, enum values, references) with a live entity-relationship diagram; data regenerates as you edit</p></div><div class="l-card"><h3>Data page</h3><p>Browse generated rows per resource, change the seed and row count, download CSV</p></div></div>
+  <section class="l-wrap l-section" id="features">
+    <h2>Features</h2>
+    <dl class="l-feats"><div><dt>AI schema design</dt><dd>With 29 field types, refs, enums, ranges, required/nullable/unique.</dd></div><div><dt>Seeded</dt><dd>Reproducible fake data generated in topological (FK-safe) order.</dd></div><div><dt>REST simulator</dt><dd>CRUD, filters (_gte/_lte/_ne/_like), q search, multi-sort, page/limit, fields, expand, nested routes.</dd></div><div><dt>Validation engine</dt><dd>With 422 details (types, enums, ranges, emails, FK existence, uniqueness, unknown fields).</dd></div><div><dt>Latency simulation</dt><dd>And chaos mode (random 500s) for resilience testing.</dd></div><div><dt>Syntax-highlighted JSON console</dt><dd>With one-click example requests.</dd></div><div><dt>Exports</dt><dd>TypeScript interfaces, OpenAPI 3.0, JSON Schema, db.json.</dd></div><div><dt>Schema page</dt><dd>Editable resources and fields (types, required/nullable/unique, ranges, enum values, references) with a live entity-relationship diagram; data regenerates as you edit.</dd></div><div><dt>Data page</dt><dd>Browse generated rows per resource, change the seed and row count, download CSV.</dd></div><div><dt>Console page</dt><dd>Request history, and copyable curl and fetch snippets for the current request.</dd></div></dl>
   </section>
 
-  <section class="l-section reveal">
-    <div class="l-head"><p class="l-kicker">How it works</p><h2>Real engines where it counts, AI where it helps</h2></div>
-    <div class="l-steps">
-      <div><span>1</span><h3>Create a free account</h3><p>One account works across every app on this site.</p></div>
-      <div><span>2</span><h3>Ask in your own words</h3><p>Type or click. The AI handles natural-language → typed API schema (JSON), sanitized and repaired locally.</p></div>
-      <div><span>3</span><h3>Keep what you make</h3><p>Your work is saved in your browser and can be exported any time.</p></div>
-    </div>
-    <p class="l-note">Computed locally, with no AI involved: data generation, routing, querying, validation, exports.</p>
+  <section class="l-wrap l-section l-split">
+    <div><h2>Runs in your browser</h2><p>Data generation, routing, querying, validation, exports. None of this needs a network connection or a model.</p></div>
+    <div><h2>Uses a language model for</h2><p>Natural-language → typed API schema, sanitized and repaired locally.</p></div>
   </section>
 
-  <section class="l-section reveal" id="faq">
-    <div class="l-head"><p class="l-kicker">Questions</p><h2>Good to know</h2></div>
-    <div class="l-faq">
-      <details><summary>Is it free?</summary><p>Yes. Every feature is free. Each account gets a daily allowance of AI requests.</p></details>
-      <details><summary>Where is my data stored?</summary><p>What you create stays in this browser on this device. Your account is only used to sign you in and to use the built-in AI. You can export a backup or delete everything from Settings.</p></details>
-      <details><summary>Do I need an API key?</summary><p>No. Signed-in users get the built-in AI with nothing to set up. You can also connect your own Groq or OpenRouter key in Settings if you prefer.</p></details>
-      <details><summary>What can I type into the AI box?</summary><p>Anything you would ask a helpful colleague who knows the app, such as: "An API for a vet clinic with owners, pets and appointments". It plans the steps, runs the app's own functions and tells you what it did. The Instructions tab saves preferences every AI feature follows.</p></details>
-      <details><summary>Can I see the code?</summary><p>Yes. It is open source under the MIT license on <a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">GitHub</a>, with a <a href="tests/">public test suite</a>.</p></details>
-    </div>
-  </section>
-
-  <section class="l-final reveal">
-    <h2>Describe your API. Start calling it right now.</h2>
-    <a class="btn primary big" href="login.html">Get started free</a>
+  <section class="l-wrap l-section" id="notes">
+    <h2>Notes</h2>
+    <dl class="l-notes">
+      <dt>Cost</dt><dd>Free. Each account has a daily allowance of AI requests.</dd>
+      <dt>Your data</dt><dd>What you make stays in this browser on this device. Your account is only used for signing in and for the built-in AI. You can export a backup or clear everything from Settings.</dd>
+      <dt>AI access</dt><dd>Signed-in users get the built-in AI with nothing to set up. You can also use your own Groq or OpenRouter key under Settings.</dd>
+      <dt>Source</dt><dd>The code and tests are on <a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">GitHub</a> under the MIT license. The tests also run <a href="tests/">in your browser</a>.</dd>
+    </dl>
   </section>
 </main>
 
-<footer class="l-foot"><span>Mock Forge</span><span><a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">Source</a> · <a href="tests/">Tests</a> · MIT license</span></footer>
-<script>
-document.querySelectorAll('.reveal').forEach((el) => el.classList.add('pre'));
-const io = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.remove('pre'); io.unobserve(x.target); } }), { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-</script>
+<footer class="l-foot"><div class="l-wrap l-foot-in"><span>Mock Forge, by <a href="https://github.com/dguywhoknows" rel="noopener">dguywhoknows</a></span><span><a href="https://github.com/dguywhoknows/mock-api-generator" rel="noopener">Source</a> · <a href="tests/">Tests</a> · <a href="login.html">Sign up free</a></span></div></footer>
 </body>
 </html>
