@@ -8,7 +8,7 @@ Live: https://dguywhoknows.github.io/mock-api-generator/
 
 ## Overview
 
-Mock Forge is for frontend developers who can't wait for the backend. Describe the API ("a blogging platform: users write posts, readers leave comments…") and the AI designs typed resources with relations, enums, ranges and constraints. A seeded fake-data engine fills them in dependency order, so every foreign key points at a real row. The built-in REST simulator handles GET, POST, PUT, PATCH and DELETE with filtering operators, full-text search, multi-key sorting, pagination, field projection, relation expansion, nested routes, schema validation with 422 errors, simulated latency and a chaos mode. You can export TypeScript interfaces, OpenAPI 3, JSON Schema or a json-server db.json.
+Stub Server is for frontend developers who can't wait for the backend. Describe the API ("a blogging platform: users write posts, readers leave comments…") and the AI designs typed resources with relations, enums, ranges and constraints. A seeded fake-data engine fills them in dependency order, so every foreign key points at a real row. The built-in REST simulator handles GET, POST, PUT, PATCH and DELETE with filtering operators, full-text search, multi-key sorting, pagination, field projection, relation expansion, nested routes, schema validation with 422 errors, simulated latency and a chaos mode. You can export TypeScript interfaces, OpenAPI 3, JSON Schema or a json-server db.json.
 
 ## Pages
 
